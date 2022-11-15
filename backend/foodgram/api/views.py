@@ -5,7 +5,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from recipe.models import (Favorite, Follow, Ingredient, IngredientInRecipe,
                            Recipe, Shopping_list, Tag)
 from rest_framework import filters, generics, status, viewsets
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, SAFE_METHODS
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from users.models import CustomUser
@@ -35,14 +35,11 @@ class RecipeViewSet(viewsets.ModelViewSet):
     filterset_class = RecipeFilter
 
     def get_serializer_class(self):
-        if self.request.method in ('POST', 'PUT', 'PATCH'):
-            return RecipePostSerializer
-        return RecipeGetSerializer
+        if self.request.method in SAFE_METHODS:
+            return RecipeGetSerializer
+        return RecipePostSerializer
 
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
-
-    def perform_update(self, serializer):
         serializer.save(author=self.request.user)
 
 
