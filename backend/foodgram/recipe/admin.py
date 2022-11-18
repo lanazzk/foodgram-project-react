@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
 from recipe.models import (Favorite, Follow, Ingredient, IngredientInRecipe,
-                           Recipe, Shopping_list, Tag)
+                           Recipe, ShoppingList, Tag)
 from rest_framework.authtoken.models import TokenProxy
 
 
@@ -30,7 +30,7 @@ admin.site.register(Ingredient, IngredientAdmin)
 admin.site.register(IngredientInRecipe)
 admin.site.register(Recipe, RecipeAdmin)
 admin.site.register(Favorite)
-admin.site.register(Shopping_list)
+admin.site.register(ShoppingList)
 admin.site.register(Follow)
 admin.site.unregister(Group)
 admin.site.unregister(TokenProxy)

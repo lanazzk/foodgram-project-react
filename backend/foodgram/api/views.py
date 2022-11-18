@@ -3,7 +3,7 @@ from django.db.models import Sum
 from django.shortcuts import HttpResponse, get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from recipe.models import (Favorite, Follow, Ingredient, IngredientInRecipe,
-                           Recipe, Shopping_list, Tag)
+                           Recipe, ShoppingList, Tag)
 from rest_framework import filters, generics, status, viewsets
 from rest_framework.permissions import SAFE_METHODS, IsAuthenticated
 from rest_framework.response import Response
@@ -83,7 +83,7 @@ class ShoppingListApiView(APIView):
         serializer = ShoppingListSerializer(
             data=data,
             context={'request': request}
-            )
+        )
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -91,7 +91,7 @@ class ShoppingListApiView(APIView):
     def delete(self, request, recipe_id):
         user = request.user
         recipe = get_object_or_404(Recipe, id=recipe_id)
-        Shopping_list.objects.filter(user=user, recipe=recipe).delete()
+        ShoppingList.objects.filter(user=user, recipe=recipe).delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 

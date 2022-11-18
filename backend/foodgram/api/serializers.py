@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.core.files.base import ContentFile
 from django.shortcuts import get_object_or_404
 from recipe.models import (Favorite, Follow, Ingredient, IngredientInRecipe,
-                           Recipe, Shopping_list, Tag)
+                           Recipe, ShoppingList, Tag)
 from rest_framework import serializers
 from rest_framework.validators import UniqueTogetherValidator
 from users.serializers import CurrentUserSerializer
@@ -73,8 +73,8 @@ class RecipeGetSerializer(serializers.ModelSerializer):
         if request is None or request.user.is_anonymous:
             return False
         user = request.user
-        return (Shopping_list.objects.filter(user=user,
-                                             recipe=obj).exists())
+        return (ShoppingList.objects.filter(user=user,
+                                            recipe=obj).exists())
 
 
 class IngredientInRecipePostSerializer(serializers.ModelSerializer):
@@ -191,10 +191,10 @@ class ShoppingListSerializer(serializers.ModelSerializer):
 
     class Meta:
         fields = ('user', 'recipe')
-        model = Shopping_list
+        model = ShoppingList
         validators = [
             UniqueTogetherValidator(
-                queryset=Shopping_list.objects.all(),
+                queryset=ShoppingList.objects.all(),
                 fields=('user', 'recipe'),
                 message='Recipe already added to shopping list'
             )
@@ -222,7 +222,7 @@ class FollowGetSerializer(serializers.ModelSerializer):
         return (Follow.objects.filter(
             user=self.context['request'].user,
             following=obj).exists()
-            )
+        )
 
     def get_recipes(self, obj):
         recipes = obj.recipes.all()[:6]

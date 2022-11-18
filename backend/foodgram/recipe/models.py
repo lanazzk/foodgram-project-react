@@ -45,7 +45,7 @@ class IngredientInRecipe(models.Model):
         on_delete=models.CASCADE,
         related_name='ingredients_in_recipe',
         verbose_name='Ingredient'
-        )
+    )
     amount = models.PositiveSmallIntegerField(
         'Amount'
     )
@@ -91,7 +91,7 @@ class Recipe(models.Model):
     cooking_time = models.PositiveSmallIntegerField(
         'Cooking time in minutes',
         validators=[MinValueValidator(1, 'Value cannot be less than 1')],
-        )
+    )
 
     class Meta:
         verbose_name = 'Recipe'
@@ -123,7 +123,7 @@ class Favorite(models.Model):
         )
 
 
-class Shopping_list(models.Model):
+class ShoppingList(models.Model):
     user = models.ForeignKey(
         User,
         related_name='shopping_list',
