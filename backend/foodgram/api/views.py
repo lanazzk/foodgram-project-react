@@ -5,7 +5,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from recipe.models import (Favorite, Follow, Ingredient, IngredientInRecipe,
                            Recipe, Shopping_list, Tag)
 from rest_framework import filters, generics, status, viewsets
-from rest_framework.permissions import IsAuthenticated, SAFE_METHODS
+from rest_framework.permissions import SAFE_METHODS, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from users.models import CustomUser
