@@ -1,25 +1,25 @@
 version: '3.3'
 services:
   db:
-      image: postgres:12.4
+      image: postgres:13.0-alpine
       volumes:
-        - /var/lib/postgresql/data/
+        - db_value:/var/lib/postgresql/data/
       env_file:
-        - ../backend/foodgram/foodgram/.env
+        - ./.env
 
   backend:
     image: lanazzk/foodgram:latest
     restart: always
     volumes:
-      - app/static/
-      - app/media/
+      - static_value:/app/static/
+      - media_value:/app/media/
     depends_on:
       - db
     env_file:
-      - ../backend/foodgram/foodgram/.env
+      - ./.env
 
   frontend:
-    image: lanazzk/foodgram:latest
+    image: lanazzk/foodgram_frontend:latest
     volumes:
       - ../frontend/:/app/result_build/
     depends_on:
@@ -44,4 +44,3 @@ volumes:
   static_value:
   media_value:
   db_value:
-

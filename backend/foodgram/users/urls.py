@@ -7,8 +7,8 @@ app_name = 'users'
 
 
 urlpatterns = [
-    path('users/', UserList.as_view()),
-    path('users/<int:pk>/', UserDetail.as_view()),
     path('auth/', include('djoser.urls.authtoken')),
-    path('', include('djoser.urls'))
+    path('', include('djoser.urls')),
+    path('users/', UserList.as_view()),
+    path('users/<int:pk>/', UserDetail.as_view())
 ]
