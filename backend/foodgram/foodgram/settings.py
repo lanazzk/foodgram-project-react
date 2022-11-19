@@ -19,12 +19,23 @@ SECRET_KEY = os.getenv('SECRET_KEY', default='django-insecure-$qkmlbpj6_vqy$jpzi
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    '84.201.135.200',
+    'http://84.201.135.200', 'https://84.201.135.200',
+    'http://localhost', 'http://127.0.0.1',
+    'https://127.0.0.1', 'https://localhost']
+
+CSRF_TRUSTED_ORIGINS = [
+    '84.201.135.200',
+    'http://84.201.135.200', 'https://84.201.135.200',
+    'http://localhost', 'http://127.0.0.1',
+    'https://127.0.0.1', 'https://localhost']
+
 ALLOWED_ORIGINS = [
     '84.201.135.200',
     'http://84.201.135.200', 'https://84.201.135.200',
-    'http://localhost', 'http://backend',
-    'https://127.0.0.1', 'https://backend'
+    'http://localhost', 'http://127.0.0.1',
+    'https://127.0.0.1', 'https://localhost'
 ]
 
 # Application definition
@@ -45,8 +56,6 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'users.apps.UsersConfig'
 ]
-
-CSRF_TRUSTED_ORIGINS = ['*']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
