@@ -20,13 +20,13 @@ SECRET_KEY = os.getenv('SECRET_KEY', default='django-insecure-$qkmlbpj6_vqy$jpzi
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-ALLOWED_ORIGINS = [
-    '84.201.135.200',
-    'http://84.201.135.200', 'https://84.201.135.200',
-    'http://localhost', 'http://backend',
-    'https://127.0.0.1', 'https://backend'
-]
-CSRF_TRUSTED_ORIGINS = ALLOWED_ORIGINS.copy()
+# ALLOWED_ORIGINS = [
+#     '84.201.135.200',
+#     'http://84.201.135.200', 'https://84.201.135.200',
+#     'http://localhost', 'http://backend',
+#     'https://127.0.0.1', 'https://backend'
+# ]
+# CSRF_TRUSTED_ORIGINS = ALLOWED_ORIGINS.copy()
 
 # Application definition
 
@@ -58,8 +58,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_URLS_REGEX = r'^/api/.*$'
+# CORS_ORIGIN_ALLOW_ALL = True
+# CORS_URLS_REGEX = r'^/api/.*$'
 ROOT_URLCONF = 'foodgram.urls'
 
 TEMPLATES = [
