@@ -25,6 +25,7 @@ CSRF_TRUSTED_ORIGINS = [
 
 ALLOWED_HOSTS = [
     'http://84.201.135.200', 'https://84.201.135.200',
+    'http://84.201.135.200/:1', 'https://84.201.135.200/:1',
     'http://localhost', 'http://127.0.0.1',
     'https://127.0.0.1', 'https://localhost']
 
