@@ -25,15 +25,8 @@ CSRF_TRUSTED_ORIGINS = [
 
 ALLOWED_HOSTS = [
     'http://84.201.135.200', 'https://84.201.135.200',
-    'http://84.201.135.200/:1', 'https://84.201.135.200/:1',
     'http://localhost', 'http://127.0.0.1',
     'https://127.0.0.1', 'https://localhost']
-
-ALLOWED_ORIGINS = [
-    'http://84.201.135.200', 'https://84.201.135.200',
-    'http://localhost', 'http://127.0.0.1',
-    'https://127.0.0.1', 'https://localhost'
-]
 
 # Application definition
 
@@ -57,16 +50,16 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
-# CORS_URLS_REGEX = r'^/api/.*$'
+CORS_URLS_REGEX = r'^/api/.*$'
 ROOT_URLCONF = 'foodgram.urls'
 
 TEMPLATES = [
@@ -142,8 +135,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
-
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
