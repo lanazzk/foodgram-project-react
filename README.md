@@ -1,4 +1,4 @@
-# Website Foodgram
+# Website Foodgram:
 ### Service description:
 
 In this service users can authorize, publishe recipes, subscribe to publication of ahother users, create list of favorite, form shopping list and download this list. After registration users get authorization token. For add recipes, users should choose ingredients from base and tags(for example: Breakfast), amount, add image, text and cooking time, all fields are required.
