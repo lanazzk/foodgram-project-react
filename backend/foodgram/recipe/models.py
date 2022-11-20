@@ -8,7 +8,7 @@ User = get_user_model()
 
 class Tag(models.Model):
     name = models.CharField(max_length=200, unique=True)
-    color_code = models.CharField(max_length=7)
+    color = models.CharField(max_length=7)
     slug = models.SlugField(
         max_length=200,
         unique=True,
