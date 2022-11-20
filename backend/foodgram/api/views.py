@@ -2,15 +2,16 @@ from django.contrib.auth import get_user_model
 from django.db.models import Sum
 from django.shortcuts import HttpResponse, get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from recipe.models import (Favorite, Follow, Ingredient, IngredientInRecipe,
-                           Recipe, ShoppingList, Tag)
-from rest_framework import filters, generics, status, viewsets
+from rest_framework import generics, status, viewsets
 from rest_framework.permissions import SAFE_METHODS, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+from recipe.models import (Favorite, Follow, Ingredient, IngredientInRecipe,
+                           Recipe, ShoppingList, Tag)
 from users.models import CustomUser
 
-from .filters import RecipeFilter
+from .filters import IngredientsSearchFilter, RecipeFilter
 from .permissions import IsAuthorOrReadOnly
 from .serializers import (FavoriteSerializer, FollowGetSerializer,
                           FollowSerializer, IngredientSerializer,
@@ -23,7 +24,7 @@ User = get_user_model()
 class IngredientViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Ingredient.objects.all()
     serializer_class = IngredientSerializer
-    filter_backends = (DjangoFilterBackend, filters.SearchFilter)
+    filter_backends = (IngredientsSearchFilter, )
     search_fields = ('^name', )
     pagination_class = None
 
