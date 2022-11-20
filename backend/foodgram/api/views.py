@@ -2,13 +2,12 @@ from django.contrib.auth import get_user_model
 from django.db.models import Sum
 from django.shortcuts import HttpResponse, get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
+from recipe.models import (Favorite, Follow, Ingredient, IngredientInRecipe,
+                           Recipe, ShoppingList, Tag)
 from rest_framework import generics, status, viewsets
 from rest_framework.permissions import SAFE_METHODS, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
-from recipe.models import (Favorite, Follow, Ingredient, IngredientInRecipe,
-                           Recipe, ShoppingList, Tag)
 from users.models import CustomUser
 
 from .filters import IngredientsSearchFilter, RecipeFilter

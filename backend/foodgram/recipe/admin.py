@@ -1,9 +1,8 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
-from rest_framework.authtoken.models import TokenProxy
-
 from recipe.models import (Favorite, Follow, Ingredient, IngredientInRecipe,
                            Recipe, ShoppingList, Tag)
+from rest_framework.authtoken.models import TokenProxy
 
 
 class IngredientAdmin(admin.ModelAdmin):

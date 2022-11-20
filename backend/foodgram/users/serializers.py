@@ -1,8 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.core.validators import RegexValidator
-from rest_framework import serializers
-
 from recipe.models import Follow
+from rest_framework import serializers
 
 User = get_user_model()
 
