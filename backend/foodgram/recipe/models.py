@@ -8,7 +8,7 @@ User = get_user_model()
 
 class Tag(models.Model):
     name = models.CharField(max_length=200, unique=True)
-    color_code = models.CharField(max_length=7, default='#49B64E')
+    color_code = models.CharField(max_length=7)
     slug = models.SlugField(
         max_length=200,
         unique=True,
@@ -38,9 +38,6 @@ class Ingredient(models.Model):
     class Meta:
         verbose_name = 'Ingredient'
         verbose_name_plural = 'Ingredients'
-
-    def __str__(self):
-        return self.name
 
 
 class IngredientInRecipe(models.Model):

@@ -23,7 +23,8 @@ User = get_user_model()
 class IngredientViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Ingredient.objects.all()
     serializer_class = IngredientSerializer
-    filter_backends = (IngredientsSearchFilter, )
+    filter_backends = [DjangoFilterBackend, ]
+    filterset_class = IngredientsSearchFilter
     search_fields = ('^name', )
     pagination_class = None
 
