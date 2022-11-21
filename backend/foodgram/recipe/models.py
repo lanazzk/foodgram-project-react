@@ -39,6 +39,9 @@ class Ingredient(models.Model):
         verbose_name = 'Ingredient'
         verbose_name_plural = 'Ingredients'
 
+    def __str__(self):
+        return self.name
+
 
 class IngredientInRecipe(models.Model):
     ingredient = models.ForeignKey(
