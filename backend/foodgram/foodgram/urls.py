@@ -11,4 +11,3 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-# коммент для пуша fdv dfdf ff n d bb
