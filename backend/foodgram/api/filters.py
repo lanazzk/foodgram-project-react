@@ -14,7 +14,6 @@ class IngredientsSearchFilter(filters.FilterSet):
 
 
 class RecipeFilter(filters.FilterSet):
-    author = filters.ModelChoiceFilter(queryset=User.objects.all())
     tags = filters.ModelMultipleChoiceFilter(
         field_name='tags__slug',
         queryset=Tag.objects.all(),
@@ -40,6 +39,5 @@ class RecipeFilter(filters.FilterSet):
     def get_is_in_shopping_cart(self, queryset, name, value):
         user = self.request.user
         if value in [True, '1']:
-            print(queryset)
             return Recipe.objects.filter(shopping_list__user=user)
         return queryset
