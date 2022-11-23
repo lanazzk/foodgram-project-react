@@ -5,6 +5,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from recipe.models import (Favorite, Follow, Ingredient, IngredientInRecipe,
                            Recipe, ShoppingList, Tag)
 from rest_framework import generics, status, viewsets
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import SAFE_METHODS, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -35,7 +36,8 @@ class RecipeViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthorOrReadOnly, )
     filter_backends = [DjangoFilterBackend, ]
     filterset_class = RecipeFilter
-    pagination_class = RecipePagination
+    pagination_class = PageNumberPagination
+    pagination_class.page_size = 6
 
     def get_serializer_class(self):
         if self.request.method in SAFE_METHODS:
