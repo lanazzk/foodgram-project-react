@@ -35,7 +35,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
     queryset = Recipe.objects.all()
     permission_classes = (IsAuthorOrReadOnly, )
     filter_backends = [DjangoFilterBackend, ]
-    filterset_class = RecipeFilter
+    filter_class = RecipeFilter
     pagination_class = PageNumberPagination
     pagination_class.page_size = 6
 
