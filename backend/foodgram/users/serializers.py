@@ -15,11 +15,10 @@ class CurrentUserSerializer(serializers.ModelSerializer):
                   'is_subscribed')
 
     def get_is_subscribed(self, obj):
-        request = self.context.get('request')
+        request = self.context.get['request']
         if request is None or request.user.is_anonymous:
             return False
-        user = request.user
-        return (Follow.objects.filter(user=user,
+        return (Follow.objects.filter(user=request.user,
                                       following=obj).exists())
 
 

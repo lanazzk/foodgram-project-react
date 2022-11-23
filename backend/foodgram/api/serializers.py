@@ -219,10 +219,11 @@ class FollowGetSerializer(serializers.ModelSerializer):
         model = User
 
     def get_is_subscribed(self, obj):
-        return (Follow.objects.filter(
-            user=self.context['request'].user,
-            following=obj).exists()
-        )
+        request = self.context.get['request']
+        if request is None or request.user.is_anonymous:
+            return False
+        return (Follow.objects.filter(user=request.user,
+                                      following=obj).exists())
 
     def get_recipes(self, obj):
         recipes = obj.recipes.all()[:3]
@@ -252,7 +253,7 @@ class FollowSerializer(serializers.ModelSerializer):
     def validate(self, data):
         if self.context['request'].user == data['following']:
             raise serializers.ValidationError(
-                'You cannot suscribe to yourself')
+                'You cannot subscribe to yourself')
         return data
 
     def to_representation(self, instance):

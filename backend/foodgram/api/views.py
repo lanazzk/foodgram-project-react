@@ -74,6 +74,7 @@ class FavoriteApiView(APIView):
 
 class ShoppingListApiView(APIView):
     permission_classes = [IsAuthenticated, ]
+    pagination_class = None
 
     def post(self, request, recipe_id):
         user = request.user
