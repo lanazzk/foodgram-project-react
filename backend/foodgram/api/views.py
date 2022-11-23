@@ -37,13 +37,6 @@ class RecipeViewSet(viewsets.ModelViewSet):
     filterset_class = RecipeFilter
     pagination_class = RecipePagination
 
-    def get_queryset(self):
-        if self.request.user.is_anonymous:
-            return self.queryset
-        is_in_shopping = self.request.query_params.get('is_in_shopping_cart')
-        if is_in_shopping in ('1', 'true',):
-            return self.queryset.filter(id_in=self.request.user.shoppinglist.values_list('recipe', flat=True))
-
     def get_serializer_class(self):
         if self.request.method in SAFE_METHODS:
             return RecipeGetSerializer
