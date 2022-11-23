@@ -45,6 +45,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
         is_in_shopping = self.request.query_params.get('is_in_shopping_cart')
         if is_in_shopping in ('1', 'true',):
             queryset = self.queryset.filter(id_in=user.shoppinglist.values_list('recipe', flat=True))
+        return queryset
 
     def get_serializer_class(self):
         if self.request.method in SAFE_METHODS:
