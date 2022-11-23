@@ -219,7 +219,7 @@ class FollowGetSerializer(serializers.ModelSerializer):
         model = User
 
     def get_is_subscribed(self, obj):
-        request = self.context.get['request']
+        request = self.context['request']
         if request is None or request.user.is_anonymous:
             return False
         return (Follow.objects.filter(user=request.user,
