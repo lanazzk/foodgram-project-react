@@ -35,7 +35,16 @@ class RecipeViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthorOrReadOnly, )
     filter_backends = [DjangoFilterBackend, ]
     filterset_class = RecipeFilter
-    pagination_class = None
+    pagination_class = RecipePagination
+
+    def get_queryset(self):
+        queryset = self.queryset
+        user = self.request.user
+        if user.is_anonymous:
+            return queryset
+        is_in_shopping = self.request.query_params.get('is_in_shopping_cart')
+        if is_in_shopping in ('1', 'true',):
+            queryset = self.queryset.filter(id_in=user.shoppinglist.values_list('recipe', flat=True))
 
     def get_serializer_class(self):
         if self.request.method in SAFE_METHODS:
@@ -54,6 +63,7 @@ class TagViewSet(viewsets.ReadOnlyModelViewSet):
 
 class FavoriteApiView(APIView):
     permission_classes = [IsAuthenticated, ]
+    pagination_class = RecipePagination
 
     def post(self, request, recipe_id):
         user = request.user
