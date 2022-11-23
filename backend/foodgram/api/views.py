@@ -11,6 +11,7 @@ from rest_framework.views import APIView
 from users.models import CustomUser
 
 from .filters import IngredientsSearchFilter, RecipeFilter
+from .pagination import RecipePagination
 from .permissions import IsAuthorOrReadOnly
 from .serializers import (FavoriteSerializer, FollowGetSerializer,
                           FollowSerializer, IngredientSerializer,
@@ -34,6 +35,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthorOrReadOnly, )
     filter_backends = [DjangoFilterBackend, ]
     filterset_class = RecipeFilter
+    pagination_class = RecipePagination
 
     def get_serializer_class(self):
         if self.request.method in SAFE_METHODS:
