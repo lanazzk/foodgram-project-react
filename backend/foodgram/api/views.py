@@ -5,7 +5,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from recipe.models import (Favorite, Follow, Ingredient, IngredientInRecipe,
                            Recipe, ShoppingList, Tag)
 from rest_framework import generics, status, viewsets
-from rest_framework.pagination import PageNumberPagination
+# from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import SAFE_METHODS, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -33,8 +33,6 @@ class IngredientViewSet(viewsets.ReadOnlyModelViewSet):
 
 class RecipeViewSet(viewsets.ModelViewSet):
     queryset = Recipe.objects.all()
-    pagination_class = PageNumberPagination
-    pagination_class.page_size = 5
     permission_classes = (IsAuthorOrReadOnly, )
     filter_backends = [DjangoFilterBackend, ]
     filterset_class = RecipeFilter
