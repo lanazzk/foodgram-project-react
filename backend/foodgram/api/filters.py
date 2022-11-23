@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from django_filters import rest_framework as filters
-from recipe.models import Ingredient, Recipe, ShoppingList, Tag
+from recipe.models import Ingredient, Recipe, Tag
 
 User = get_user_model()
 
@@ -40,5 +40,6 @@ class RecipeFilter(filters.FilterSet):
     def get_is_in_shopping_cart(self, queryset, name, value):
         user = self.request.user
         if value in [True, '1']:
-            return ShoppingList.objects.filter(user=user)
+            print(queryset)
+            return Recipe.objects.filter(shopping_list__user=user)
         return queryset
