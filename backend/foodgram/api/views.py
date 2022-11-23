@@ -35,7 +35,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthorOrReadOnly, )
     filter_backends = [DjangoFilterBackend, ]
     filterset_class = RecipeFilter
-    pagination_class = RecipePagination
+    pagination_class = None
 
     def get_serializer_class(self):
         if self.request.method in SAFE_METHODS:
@@ -139,6 +139,7 @@ class FollowListApiView(generics.ListAPIView):
 
 class DownloadShoppingListApiView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated, ]
+    pagination_class = None
 
     def get(self, request):
         shopping_cart = {}
