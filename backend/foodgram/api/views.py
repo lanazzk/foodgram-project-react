@@ -136,6 +136,7 @@ class FollowListApiView(generics.ListAPIView):
 
 class DownloadShoppingListApiView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated, ]
+    pagination_class = None
 
     def get(self, request):
         shopping_cart = {}
