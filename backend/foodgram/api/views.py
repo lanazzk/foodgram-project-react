@@ -125,6 +125,7 @@ class FollowApiView(APIView):
 class FollowListApiView(generics.ListAPIView):
     permission_classes = [IsAuthenticated, ]
     serializer_class = FollowGetSerializer
+    pagination_class = RecipePagination
 
     def get_serializer_context(self):
         context = super().get_serializer_context()
@@ -138,7 +139,6 @@ class FollowListApiView(generics.ListAPIView):
 
 class DownloadShoppingListApiView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated, ]
-    pagination_class = None
 
     def get(self, request):
         shopping_cart = {}
