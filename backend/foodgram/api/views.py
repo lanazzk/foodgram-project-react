@@ -39,12 +39,11 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = self.queryset
-        user = self.request.user
-        if user.is_anonymous:
+        if self.request.user.is_anonymous:
             return queryset
         is_in_shopping = self.request.query_params.get('is_in_shopping_cart')
         if is_in_shopping in ('1', 'true',):
-            queryset = self.queryset.filter(id_in=user.shoppinglist.values_list('recipe', flat=True))
+            queryset = self.queryset.filter(id_in=self.request.user.shoppinglist.values_list('recipe', flat=True))
         return queryset
 
     def get_serializer_class(self):
