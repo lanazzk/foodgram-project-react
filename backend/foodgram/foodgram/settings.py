@@ -158,6 +158,11 @@ REST_FRAMEWORK = {
 }
 
 DJOSER = {
+    'SEND_ACTIVATION_EMAIL': False,
+    'SERIALIZERS': {
+        'user': 'users.serializers.CurrentUserSerializer',
+        'current_user': 'users.serializers.CurrentUserSerializer',
+    },
     'HIDE_USERS': False,
     'PERMISSIONS': {
         'activation': ['rest_framework.permissions.AllowAny'],
