@@ -33,11 +33,11 @@ class IngredientViewSet(viewsets.ReadOnlyModelViewSet):
 
 class RecipeViewSet(viewsets.ModelViewSet):
     queryset = Recipe.objects.all()
+    pagination_class = PageNumberPagination
+    pagination_class.page_size = 5
     permission_classes = (IsAuthorOrReadOnly, )
     filter_backends = [DjangoFilterBackend, ]
     filterset_class = RecipeFilter
-    pagination_class = PageNumberPagination
-    pagination_class.page_size = 6
 
     def get_serializer_class(self):
         if self.request.method in SAFE_METHODS:
