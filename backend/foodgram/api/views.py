@@ -38,9 +38,8 @@ class RecipeViewSet(viewsets.ModelViewSet):
     pagination_class = RecipePagination
 
     def get_queryset(self):
-        queryset = self.queryset
         if self.request.user.is_anonymous:
-            return queryset
+            return self.queryset
         is_in_shopping = self.request.query_params.get('is_in_shopping_cart')
         if is_in_shopping in ('1', 'true',):
             queryset = self.queryset.filter(id_in=self.request.user.shoppinglist.values_list('recipe', flat=True))
