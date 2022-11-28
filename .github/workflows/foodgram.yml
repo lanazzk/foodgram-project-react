@@ -55,10 +55,12 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            sudo docker pull ${{ secrets.USER }}/foodgram:latest
-            sudo docker pull ${{ secrets.USER }}/foodgram_frontend:latest
             sudo docker compose stop
-            sudo docker compose rm backend
+            sudo docker docker compose down -v
+            sudo docker compose rmi ${{ secrets.DOCKER_USERNAME }}/foodgram:latest
+            sudo docker compose rmi ${{ secrets.DOCKER_USERNAME }}/foodgram_frontend:latest
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/foodgram:latest
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/foodgram_frontend:latest
             rm .env
             touch .env
             echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
