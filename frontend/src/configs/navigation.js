@@ -16,7 +16,7 @@ export default [
     href: '/favorites',
     auth: true
   }, {
-    title: 'Cart',
+    title: 'Shopping cart',
     href: '/cart',
     auth: true
   }
