@@ -36,10 +36,10 @@ Sample of env-file located in /foodgram/foodgram .env.example
 Run next commands in rotation:
 
 ```
-docker-compose exec web python manage.py migrate
-docker-compose exec web python manage.py createsuperuser
-docker-compose exec web python manage.py collectstatic --no-input
-docker-compose exec web python manage.py loaddata fixtures.json
+docker compose exec backend python manage.py makemigrations
+docker compose exec web python manage.py migrate
+docker compose exec web python manage.py createsuperuser
+docker compose exec web python manage.py collectstatic --no-input
 ```
 
 ### Request/response examples:
@@ -153,12 +153,13 @@ POST /api/recipes/{id}/favorite/
 ```
 }
 
-Download shopping list"
+Screenshots:
 
-Access permission: Authenticated users
+![recipe3](https://user-images.githubusercontent.com/80057791/204387308-3b6899f0-8c14-49a5-8430-0ab3f0cf03af.jpg)
 
-GET /api/recipes/download_shopping_cart/
+![1recipe9](https://user-images.githubusercontent.com/80057791/204387277-f0a0ca75-7f33-4dfb-a271-1bab8285f8bf.png)
 
+![download](https://user-images.githubusercontent.com/80057791/204387377-3a1a01c5-7831-4ade-84f5-c06999884b6b.png)
 
-A complete list can be found in the documentation.
-`/api/docs/redoc.html/`
+![signup](https://user-images.githubusercontent.com/80057791/204387390-eaa59849-31f8-49d9-8eb4-27e6b7f96af6.png)
+
