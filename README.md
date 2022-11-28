@@ -1,3 +1,4 @@
+![build status](https://github.com/lanazzk/foodgram-project-react/actions/workflows/foodgram.yml/badge.svg)
 # Website Foodgram: http://84.201.135.200/
 ### Service description:
 
