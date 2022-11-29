@@ -10,7 +10,7 @@ FILE_TO_OPEN = PROJECT_DIR / 'ingredients.csv'
 
 
 class Command(BaseCommand):
-    help = 'Импорт ингредиентов в БД'
+    help = 'Import ingredients to data base'
 
     def handle(self, **kwargs):
         with open(
