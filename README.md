@@ -6,6 +6,11 @@ In this service users can authorize, publishe recipes, subscribe to publication 
 
 In repository exist next directories:frontend, backend,infra(configuration file nginx and docker-compose.yml), data(ingredients file) и docs.
 
+Additionaly configured CI/CD(Continuous Integration and Continuous Deployment) for this project:
+  - automatic start of tests(pep8),
+  - building or updating docker image in container on Docker Hub; 
+  - automatic deploy to the production server;
+
 ### Technologies
 - Python 3.8
 - Django 4.1
@@ -162,4 +167,3 @@ Screenshots:
 ![download](https://user-images.githubusercontent.com/80057791/204387377-3a1a01c5-7831-4ade-84f5-c06999884b6b.png)
 
 ![signup](https://user-images.githubusercontent.com/80057791/204387390-eaa59849-31f8-49d9-8eb4-27e6b7f96af6.png)
-
