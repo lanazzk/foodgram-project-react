@@ -2,14 +2,14 @@
 # Website Foodgram: http://84.201.135.200/
 ### Service description:
 
-In this service users can authorize, publishe recipes, subscribe to publication of ahother users, create list of favorite, form shopping list and download this list. After registration users get authorization token. For add recipes, users should choose ingredients from base and tags(for example: Breakfast), amount, add image, text and cooking time, all fields are required.
+In this service, users can authorize, publish recipes, subscribe to the publication of other users, create a list of favorite, form a shopping list, and download this list. After registration users get an authorization token. To add recipes, users should choose ingredients from the base and tags(for example Breakfast), amount, add image, text, and cooking time, all fields are required.
 
-In repository exist next directories:frontend, backend,infra(configuration file nginx and docker-compose.yml), data(ingredients file) и docs.
+In the repository exist the next directories: frontend, backend, infra(configuration file nginx and docker-compose.yml), data(ingredients file) и docs.
 
-Additionaly configured CI/CD(Continuous Integration and Continuous Deployment) for this project:
+Additionally configured CI/CD(Continuous Integration and Continuous Deployment) for this project:
   - automatic start of tests(pep8),
-  - building or updating docker image in container on Docker Hub; 
-  - automatic deploy to the production server;
+  - building or updating the docker image in the container on Docker Hub; 
+  - automatic deployment to the production server;
 
 ### Technologies
 - Python 3.8
