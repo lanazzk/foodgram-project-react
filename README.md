@@ -4,7 +4,7 @@
 
 In this service, users can authorize, publish recipes, subscribe to the publication of other users, create a list of favorite, form a shopping list, and download this list. After registration users get an authorization token. To add recipes, users should choose ingredients from the base and tags(for example Breakfast), amount, add image, text, and cooking time, all fields are required.
 
-In the repository exist the next directories: frontend, backend, infra(configuration file nginx and docker-compose.yml), data(ingredients file) и docs.
+In the repository exist the next directories: frontend, backend, infra(configuration file nginx and docker-compose.yml), data(ingredients file) and docs.
 
 Additionally configured CI/CD(Continuous Integration and Continuous Deployment) for this project:
   - automatic start of tests(pep8),
